@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.shakoy.controller.TaskController" 
+            style="-fx-background-color: #f8fafc;">
+    
+    <!-- Header -->
+    <top>
+        <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #e2e8f0; -fx-border-width: 0 0 1 0;">
+            <!-- Title Bar -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="Shakoy Tasks" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1e293b;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button fx:id="addTaskButton" text="+ Add Task" 
+                        style="-fx-background-color: #2563eb; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand;"
+                        onAction="#showAddTaskDialog">
+                    <padding>
+                        <Insets top="10" right="20" bottom="10" left="20"/>
+                    </padding>
+                </Button>
+                <Button fx:id="logoutButton" text="Logout" 
+                        style="-fx-background-color: #ef4444; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand;"
+                        onAction="#handleLogout">
+                    <padding>
+                        <Insets top="10" right="20" bottom="10" left="20"/>
+                    </padding>
+                </Button>
+            </HBox>
+            
+            <!-- Filters -->
+            <HBox spacing="15" alignment="CENTER_LEFT" style="-fx-background-color: #f8fafc; -fx-padding: 15; -fx-background-radius: 10;">
+                <Label text="Filter:" style="-fx-font-size: 14px; -fx-text-fill: #64748b;"/>
+                
+                <!-- Status Filters -->
+                <Button fx:id="filterAllBtn" text="ALL" 
+                        style="-fx-background-color: #2563eb; -fx-text-fill: white; -fx-background-radius: 8; -fx-cursor: hand;"
+                        onAction="#filterAll">
+                    <padding><Insets top="8" right="16" bottom="8" left="16"/></padding>
+                </Button>
+                <Button fx:id="filterTodoBtn" text="TO DO" 
+                        style="-fx-background-color: #e2e8f0; -fx-text-fill: #475569; -fx-background-radius: 8; -fx-cursor: hand;"
+                        onAction="#filterTodo">
+                    <padding><Insets top="8" right="16" bottom="8" left="16"/></padding>
+                </Button>
+                <Button fx:id="filterProgressBtn" text="IN PROGRESS" 
+                        style="-fx-background-color: #e2e8f0; -fx-text-fill: #475569; -fx-background-radius: 8; -fx-cursor: hand;"
+                        onAction="#filterInProgress">
+                    <padding><Insets top="8" right="16" bottom="8" left="16"/></padding>
+                </Button>
+                <Button fx:id="filterCompletedBtn" text="DONE" 
+                        style="-fx-background-color: #e2e8f0; -fx-text-fill: #475569; -fx-background-radius: 8; -fx-cursor: hand;"
+                        onAction="#filterCompleted">
+                    <padding><Insets top="8" right="16" bottom="8" left="16"/></padding>
+                </Button>
+                
+                <Separator orientation="VERTICAL"/>
+                
+                <!-- Priority Filters -->
+                <Button fx:id="filterAllPriorityBtn" text="ALL" 
+                        style="-fx-background-color: #475569; -fx-text-fill: white; -fx-background-radius: 8; -fx-cursor: hand;"
+                        onAction="#filterAllPriority">
+                    <padding><Insets top="8" right="16" bottom="8" left="16"/></padding>
+                </Button>
+                <Button fx:id="filterLowBtn" text="LOW" 
+                        style="-fx-background-color: #e2e8f0; -fx-text-fill: #475569; -fx-background-radius: 8; -fx-cursor: hand;"
+                        onAction="#filterLowPriority">
+                    <padding><Insets top="8" right="16" bottom="8" left="16"/></padding>
+                </Button>
+                <Button fx:id="filterMediumBtn" text="MEDIUM" 
+                        style="-fx-background-color: #e2e8f0; -fx-text-fill: #475569; -fx-background-radius: 8; -fx-cursor: hand;"
+                        onAction="#filterMediumPriority">
+                    <padding><Insets top="8" right="16" bottom="8" left="16"/></padding>
+                </Button>
+                <Button fx:id="filterHighBtn" text="HIGH" 
+                        style="-fx-background-color: #e2e8f0; -fx-text-fill: #475569; -fx-background-radius: 8; -fx-cursor: hand;"
+                        onAction="#filterHighPriority">
+                    <padding><Insets top="8" right="16" bottom="8" left="16"/></padding>
+                </Button>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <!-- Main Content -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
+            <VBox fx:id="tasksContainer" spacing="15" style="-fx-padding: 20;">
+                <!-- Tasks will be added here dynamically -->
+            </VBox>
+        </ScrollPane>
+    </center>
+    
+    <!-- Footer Stats -->
+    <bottom>
+        <HBox spacing="20" alignment="CENTER" style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #e2e8f0; -fx-border-width: 1 0 0 0;">
+            <VBox alignment="CENTER" spacing="5" HBox.hgrow="ALWAYS">
+                <Label fx:id="todoCountLabel" text="0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2563eb;"/>
+                <Label text="To Do" style="-fx-font-size: 12px; -fx-text-fill: #64748b;"/>
+            </VBox>
+            <VBox alignment="CENTER" spacing="5" HBox.hgrow="ALWAYS">
+                <Label fx:id="progressCountLabel" text="1" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #f59e0b;"/>
+                <Label text="In Progress" style="-fx-font-size: 12px; -fx-text-fill: #64748b;"/>
+            </VBox>
+            <VBox alignment="CENTER" spacing="5" HBox.hgrow="ALWAYS">
+                <Label fx:id="completedCountLabel" text="0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #10b981;"/>
+                <Label text="Done" style="-fx-font-size: 12px; -fx-text-fill: #64748b;"/>
+            </VBox>
+        </HBox>
+    </bottom>
+    
+</BorderPane>

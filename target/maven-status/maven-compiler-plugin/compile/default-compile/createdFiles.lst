@@ -1,0 +1,12 @@
+com\shakoy\model\User.class
+com\shakoy\model\enums\Priority.class
+com\shakoy\repository\sqlite\SqliteTaskRepository.class
+com\shakoy\repository\TaskRepository.class
+com\shakoy\model\StandardUser.class
+com\shakoy\app\MainLauncher.class
+com\shakoy\model\enums\Status.class
+com\shakoy\model\Task.class
+com\shakoy\service\AuthService.class
+com\shakoy\repository\UserRepository.class
+com\shakoy\controller\AuthController.class
+com\shakoy\util\Db.class

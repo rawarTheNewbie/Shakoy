@@ -1,0 +1,78 @@
+/* Root background */
+.app-bg {
+    -fx-background-color: linear-gradient(to bottom right, #f7fafc, #edf2f7);
+}
+
+/* Card container */
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 16;
+    -fx-effect: dropshadow(gaussian, rgba(16,24,40,0.12), 20, 0.2, 0, 8);
+}
+
+/* Logo breathing room */
+.logo {
+    -fx-opacity: 0.98;
+}
+
+/* Typography */
+.title {
+    -fx-font-size: 24px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #111827;
+}
+.subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #6b7280;
+}
+.footer {
+    -fx-text-fill: #9ca3af;
+    -fx-font-size: 12px;
+}
+
+/* Inputs */
+.text-field, .password-field {
+    -fx-background-radius: 10;
+    -fx-background-color: #f9fafb;
+    -fx-padding: 10 12 10 12;
+    -fx-border-color: #e5e7eb;
+    -fx-border-radius: 10;
+}
+.text-field:focused, .password-field:focused {
+    -fx-background-color: white;
+    -fx-border-color: #3b82f6;
+    -fx-effect: dropshadow(gaussian, rgba(59,130,246,0.25), 10, 0.2, 0, 2);
+}
+
+/* Primary button */
+.btn-primary {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+    -fx-font-weight: 700;
+    -fx-background-radius: 10;
+    -fx-padding: 10 14 10 14;
+}
+.btn-primary:hover {
+    -fx-background-color: #1d4ed8;
+}
+.btn-primary:pressed {
+    -fx-background-color: #1e40af;
+}
+
+/* Hyperlink and muted text */
+.hyperlink {
+    -fx-text-fill: #2563eb;
+    -fx-underline: false;
+}
+.hyperlink:hover {
+    -fx-underline: true;
+}
+.muted {
+    -fx-text-fill: #6b7280;
+}
+
+/* Message label (errors/success) */
+.message {
+    -fx-font-size: 12px;
+    -fx-text-fill: #ef4444; /* red for errors by default */
+}
